@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/m151-backend/m151-backend.iml" filepath="$PROJECT_DIR$/m151-backend/m151-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/m151-frontend/m151-frontend.iml" filepath="$PROJECT_DIR$/m151-frontend/m151-frontend.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/m151-fullstack-project.iml" filepath="$PROJECT_DIR$/.idea/m151-fullstack-project.iml" />
     </modules>
   </component>
