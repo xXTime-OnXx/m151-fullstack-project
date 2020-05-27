@@ -1,5 +1,5 @@
 import {Module} from '@nestjs/common';
-import {AppController} from "./app/app.controller";
+import {AppController} from "./rest/app/app.controller";
 import {DomainModule} from "../domain/domain.module";
 
 @Module({
