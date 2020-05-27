@@ -1,7 +1,7 @@
 import {Controller, Get, UseGuards} from '@nestjs/common';
-import {AppQuery} from "../../../domain/usecase/query/app.query";
 import {RolesGuard} from "../../guard/roles.guard";
 import {Roles} from "../../guard/roles.decorator";
+import {AppQuery} from "../../../domain/usecase/app.query";
 
 @Controller()
 @UseGuards(RolesGuard)

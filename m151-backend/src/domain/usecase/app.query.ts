@@ -1,5 +1,5 @@
 import {Injectable} from '@nestjs/common';
-import {AppRepository} from "../../aggregate/app/app.repository";
+import {AppRepository} from "../aggregate/app/app.repository";
 
 @Injectable()
 export class AppQuery {
