@@ -1,15 +1,24 @@
-import {Controller, Get, UseGuards} from '@nestjs/common';
-import {RolesGuard} from "../../guard/roles.guard";
-import {Roles} from "../../guard/roles.decorator";
+import {Controller, Get, Post, Request, UseGuards} from '@nestjs/common';
+import {RolesGuard} from "../../role/roles.guard";
+import {Roles} from "../../role/roles.decorator";
 import {AppQuery} from "../../../domain/usecase/app.query";
+import {LocalAuthGuard} from "../../auth/local-auth.guard";
+import {AuthService} from "../../auth/auth.service";
 
 @Controller()
 @UseGuards(RolesGuard)
 export class AppController {
-  constructor(private readonly appQuery: AppQuery) {}
+  constructor(private readonly appQuery: AppQuery, private authService: AuthService) {}
 
-  @Get()
+  // TODO: continue at https://docs.nestjs.com/techniques/authentication#implementing-passport-jwt
+  @UseGuards(LocalAuthGuard)
+  @Post('auth/login')
+  async login(@Request() req) {
+    return this.authService.login(req.user);
+  }
+
   @Roles('admin')
+  @Get('status')
   public async getStatus(): Promise<string> {
     return await this.appQuery.getStatus();
   }
