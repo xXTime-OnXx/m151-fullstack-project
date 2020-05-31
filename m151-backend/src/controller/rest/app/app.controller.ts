@@ -2,7 +2,7 @@ import {Controller, Get, Post, Request, UseGuards} from '@nestjs/common';
 import {RolesGuard} from "../../role/roles.guard";
 import {Roles} from "../../role/roles.decorator";
 import {AppQuery} from "../../../domain/usecase/app.query";
-import {LocalAuthGuard} from "../../auth/local-auth.guard";
+import {LocalAuthGuard} from "../../auth/guard/local-auth.guard";
 import {AuthService} from "../../auth/auth.service";
 
 @Controller()

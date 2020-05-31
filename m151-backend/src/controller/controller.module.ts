@@ -3,10 +3,11 @@ import {AppController} from "./rest/app/app.controller";
 import {DomainModule} from "../domain/domain.module";
 import {APP_INTERCEPTOR} from "@nestjs/core";
 import {AuthService} from "./auth/auth.service";
-import {LocalStrategy} from "./auth/local.strategy";
 import {PassportModule} from "@nestjs/passport";
 import {JwtModule} from "@nestjs/jwt";
 import {jwtConstants} from "./auth/constants";
+import {LocalStrategy} from "./auth/strategy/local.strategy";
+import {JwtStrategy} from "./auth/strategy/jwt.strategy";
 
 @Module({
     imports: [
@@ -24,6 +25,7 @@ import {jwtConstants} from "./auth/constants";
     providers: [
         AuthService,
         LocalStrategy,
+        JwtStrategy,
         {
             provide: APP_INTERCEPTOR,
             useClass: CacheInterceptor,
