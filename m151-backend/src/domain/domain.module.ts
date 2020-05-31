@@ -1,14 +1,16 @@
 import {Module} from '@nestjs/common';
 import {PersistenceModule} from "../persistence/persistence.module";
 import {AppQuery} from "./usecase/app.query";
-import {AuthManager} from "./usecase/auth/auth.manager";
+import {UserQuery} from "./usecase/user/user.query";
+import {UserManager} from "./usecase/user/user.manager";
 
 const managers = [
-    AuthManager,
+    UserManager,
 ];
 
 const queries = [
     AppQuery,
+    UserQuery,
 ];
 
 const services = [

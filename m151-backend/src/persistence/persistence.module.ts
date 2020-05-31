@@ -3,6 +3,8 @@ import {ConnectionOptions} from "tls";
 import {AppRepository} from "../domain/aggregate/app/app.repository";
 import {AppRepositoryImpl} from "./app/app.repository.impl";
 import {TypeOrmModule} from "@nestjs/typeorm";
+import {UserRepositoryImpl} from "./user/user.repository.impl";
+import {UserRepository} from "../domain/aggregate/user/user.repository";
 
 @Module({
     imports: [
@@ -27,9 +29,14 @@ import {TypeOrmModule} from "@nestjs/typeorm";
             useClass: AppRepositoryImpl,
             provide: AppRepository,
         },
+        {
+            useClass: UserRepositoryImpl,
+            provide: UserRepository,
+        },
     ],
     exports: [
         AppRepository,
+        UserRepository,
     ],
 })
 export class PersistenceModule {
