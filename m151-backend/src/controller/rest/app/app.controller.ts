@@ -10,8 +10,7 @@ import {AuthService} from "../../auth/auth.service";
 export class AppController {
   constructor(private readonly appQuery: AppQuery, private authService: AuthService) {}
 
-  // TODO: continue at https://docs.nestjs.com/techniques/authentication#implementing-passport-jwt
-  @UseGuards(LocalAuthGuard)
+  @UseGuards(LocalAuthGuard) // JwtAuthGuard
   @Post('auth/login')
   async login(@Request() req) {
     return this.authService.login(req.user);
