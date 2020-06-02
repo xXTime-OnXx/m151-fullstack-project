@@ -1,5 +1,4 @@
 import {UserRepository} from "../../aggregate/user/user.repository";
-import {User} from "../../aggregate/user/user.type";
 import {CreateUserDto} from "../../aggregate/user/create-user.dto";
 
 export class UserManager {

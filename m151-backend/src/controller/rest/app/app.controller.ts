@@ -1,24 +1,29 @@
-import {Controller, Get, Post, Request, UseGuards} from '@nestjs/common';
+import {Controller, Get, Request, UseGuards} from '@nestjs/common';
 import {RolesGuard} from "../../role/roles.guard";
 import {Roles} from "../../role/roles.decorator";
 import {AppQuery} from "../../../domain/usecase/app.query";
-import {LocalAuthGuard} from "../../auth/guard/local-auth.guard";
 import {AuthService} from "../../auth/auth.service";
+import {JwtAuthGuard} from "../../auth/guard/jwt-auth.guard";
 
-@Controller()
+@Controller('app')
 @UseGuards(RolesGuard)
 export class AppController {
-  constructor(private readonly appQuery: AppQuery, private authService: AuthService) {}
 
-  @UseGuards(LocalAuthGuard) // JwtAuthGuard
-  @Post('auth/login')
-  async login(@Request() req) {
-    return this.authService.login(req.user);
-  }
+    constructor(private readonly appQuery: AppQuery, private authService: AuthService) {
+    }
 
-  @Roles('admin')
-  @Get('status')
-  public async getStatus(): Promise<string> {
-    return await this.appQuery.getStatus();
-  }
+    @UseGuards(JwtAuthGuard)
+    @Roles('admin')
+    @Get('status')
+    public async getStatus(): Promise<string> {
+        return await this.appQuery.getStatus();
+    }
+
+    @UseGuards(JwtAuthGuard)
+    @Roles('user')
+    @Get('status')
+    public async getProfile(@Request() req): Promise<string> {
+        return req.user;
+    }
+
 }
