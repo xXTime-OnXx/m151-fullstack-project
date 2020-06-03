@@ -7,18 +7,18 @@ import {CreateUserDto} from "../../../domain/aggregate/user/create-user.dto";
 
 @Controller('auth')
 @UseGuards(RolesGuard)
-export class AppController {
+export class AuthController {
     constructor(private readonly appQuery: AppQuery, private authService: AuthService) {
     }
 
-    @UseGuards(LocalAuthGuard) // JwtAuthGuard
+    @UseGuards(LocalAuthGuard)
     @Post('login')
-    async login(@Request() req) {
+    async login(@Request() req): Promise<any> {
         return this.authService.login(req.user);
     }
 
     @Post('register')
-    async register(@Body() createUserDto: CreateUserDto) {
+    async register(@Body() createUserDto: CreateUserDto): Promise<void> {
         return this.authService.register(createUserDto);
     }
 

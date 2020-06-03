@@ -21,7 +21,7 @@ export class AppController {
 
     @UseGuards(JwtAuthGuard)
     @Roles('user')
-    @Get('status')
+    @Get('profile')
     public async getProfile(@Request() req): Promise<string> {
         return req.user;
     }

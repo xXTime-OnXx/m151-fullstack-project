@@ -1,6 +1,8 @@
 import {UserRepository} from "../../aggregate/user/user.repository";
 import {User} from "../../aggregate/user/user.type";
+import {Injectable} from "@nestjs/common";
 
+@Injectable()
 export class UserQuery {
 
     constructor(private readonly userRepository: UserRepository) {
