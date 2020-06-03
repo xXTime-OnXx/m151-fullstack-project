@@ -4,6 +4,7 @@ import {Roles} from "../../role/roles.decorator";
 import {AppQuery} from "../../../domain/usecase/app.query";
 import {AuthService} from "../../auth/auth.service";
 import {JwtAuthGuard} from "../../auth/guard/jwt-auth.guard";
+import {User} from "../../../domain/aggregate/user/user.type";
 
 @Controller('app')
 @UseGuards(RolesGuard)
@@ -22,7 +23,7 @@ export class AppController {
     @UseGuards(JwtAuthGuard)
     @Roles('user')
     @Get('profile')
-    public async getProfile(@Request() req): Promise<string> {
+    public async getProfile(@Request() req): Promise<User> {
         return req.user;
     }
 

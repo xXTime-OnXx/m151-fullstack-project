@@ -17,7 +17,7 @@ import {AuthController} from "./rest/auth/auth.controller";
         PassportModule,
         JwtModule.register({
             secret: jwtConstants.secret,
-            signOptions: {expiresIn: '60s'},
+            signOptions: {expiresIn: '900s'}, // 15 minutes
         }),
     ],
     controllers: [
