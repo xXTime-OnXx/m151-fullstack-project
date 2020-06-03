@@ -3,24 +3,26 @@ import {JwtService} from "@nestjs/jwt";
 import {UserQuery} from "../../domain/usecase/user/user.query";
 import {CreateUserDto} from "../../domain/aggregate/user/create-user.dto";
 import {UserManager} from "../../domain/usecase/user/user.manager";
+import {User} from "../../domain/aggregate/user/user.type";
 
 @Injectable()
 export class AuthService {
     constructor(private jwtService: JwtService,
                 private userQuery: UserQuery,
-                private userManager: UserManager) {}
+                private userManager: UserManager) {
+    }
 
-    async validateUser(username: string, pass: string): Promise<any> {
-        const user = await this.userQuery.findOne(username, pass);
+    async validateUser(username: string, pass: string): Promise<User> {
+        const user: User = await this.userQuery.findOne(username, pass);
         if (user && user.password === pass) {
-            const { password, ...result } = user;
-            return result;
+            user.password = null;
+            return user;
         }
         return null;
     }
 
-    async login(user: any) {
-        const payload = { username: user.username, sub: user.userId };
+    async login(user: User) {
+        const payload = {sub: user.id, username: user.username, role: user.role};
         return {
             access_token: this.jwtService.sign(payload),
         };

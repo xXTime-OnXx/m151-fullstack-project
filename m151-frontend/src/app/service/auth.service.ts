@@ -28,6 +28,7 @@ export class AuthService {
       console.error(e);
     }
 
-    await localStorage.setItem(environment.bearer_token, result.access_token);
+    localStorage.removeItem(environment.bearer_token);
+    localStorage.setItem(environment.bearer_token, result.access_token);
   }
 }

@@ -1,7 +1,6 @@
-import {CacheInterceptor, CacheModule, Module} from '@nestjs/common';
+import {Module} from '@nestjs/common';
 import {AppController} from "./rest/app/app.controller";
 import {DomainModule} from "../domain/domain.module";
-import {APP_INTERCEPTOR} from "@nestjs/core";
 import {AuthService} from "./auth/auth.service";
 import {PassportModule} from "@nestjs/passport";
 import {JwtModule} from "@nestjs/jwt";
@@ -13,11 +12,11 @@ import {AuthController} from "./rest/auth/auth.controller";
 @Module({
     imports: [
         DomainModule,
-        CacheModule.register(), // TODO: Add Redis as caching store 'https://docs.nestjs.com/techniques/caching#different-stores'
-        PassportModule,
+        // CacheModule.register(), // TODO: Add Redis as caching store 'https://docs.nestjs.com/techniques/caching#different-stores'
+        PassportModule.register({}),
         JwtModule.register({
             secret: jwtConstants.secret,
-            signOptions: {expiresIn: '900s'}, // 15 minutes
+            signOptions: {expiresIn: '300s'}, // 900s = 15 min
         }),
     ],
     controllers: [
@@ -28,10 +27,10 @@ import {AuthController} from "./rest/auth/auth.controller";
         AuthService,
         LocalStrategy,
         JwtStrategy,
-        {
-            provide: APP_INTERCEPTOR,
-            useClass: CacheInterceptor,
-        },
+        // {
+        //     provide: APP_INTERCEPTOR,
+        //     useClass: CacheInterceptor,
+        // },
     ],
 })
 export class ControllerModule {

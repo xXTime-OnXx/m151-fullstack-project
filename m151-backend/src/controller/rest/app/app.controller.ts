@@ -1,27 +1,24 @@
 import {Controller, Get, Request, UseGuards} from '@nestjs/common';
-import {RolesGuard} from "../../role/roles.guard";
-import {Roles} from "../../role/roles.decorator";
+import {Role} from "../../role/roles.decorator";
 import {AppQuery} from "../../../domain/usecase/app.query";
-import {AuthService} from "../../auth/auth.service";
-import {JwtAuthGuard} from "../../auth/guard/jwt-auth.guard";
 import {User} from "../../../domain/aggregate/user/user.type";
+import {JwtAuthGuard} from "../../auth/guard/jwt-auth.guard";
+import {RolesGuard} from "../../role/roles.guard";
 
 @Controller('app')
-@UseGuards(RolesGuard)
+@UseGuards(JwtAuthGuard, RolesGuard)
 export class AppController {
 
-    constructor(private readonly appQuery: AppQuery, private authService: AuthService) {
+    constructor(private readonly appQuery: AppQuery) {
     }
 
-    @UseGuards(JwtAuthGuard)
-    @Roles('admin')
+    @Role('admin')
     @Get('status')
     public async getStatus(): Promise<string> {
         return await this.appQuery.getStatus();
     }
 
-    @UseGuards(JwtAuthGuard)
-    @Roles('user')
+    @Role('user')
     @Get('profile')
     public async getProfile(@Request() req): Promise<User> {
         return req.user;
