@@ -7,8 +7,6 @@ import {environment} from "../../environments/environment";
 })
 export class AuthService {
 
-  private readonly BEARER_TOKEN = 'bearer_token';
-
   constructor(private http: HttpClient) {
   }
 
@@ -30,6 +28,6 @@ export class AuthService {
       console.error(e);
     }
 
-    await localStorage.setItem(this.BEARER_TOKEN, result.access_token);
+    await localStorage.setItem(environment.bearer_token, result.access_token);
   }
 }
