@@ -6,3 +6,4 @@ To start the full application, make sure you're in the project root directory `/
 ```
 $ docker-compose up
 ```
+Now open your browser and go to <http://localhost:8080>
