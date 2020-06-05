@@ -17,7 +17,7 @@ import {APP_INTERCEPTOR} from "@nestjs/core";
         PassportModule.register({}),
         JwtModule.register({
             secret: jwtConstants.secret,
-            signOptions: {expiresIn: '300s'}, // 900s = 15 min
+            signOptions: {expiresIn: '600s'}, // 900s = 15 min
         }),
     ],
     controllers: [
