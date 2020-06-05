@@ -10,7 +10,7 @@ import {UserRepository} from "../domain/aggregate/user/user.repository";
     imports: [
         TypeOrmModule.forRoot({
             type: 'postgres',
-            host: 'localhost', // for prod 'postgres' else 'localhost'
+            host: 'postgres', // for prod 'postgres' else 'localhost'
             port: 5432,
             username: 'admin',
             password: 'admin',
