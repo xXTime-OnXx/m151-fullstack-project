@@ -9,6 +9,7 @@ import {LocalStrategy} from "./auth/strategy/local.strategy";
 import {JwtStrategy} from "./auth/strategy/jwt.strategy";
 import {AuthController} from "./rest/auth/auth.controller";
 import {APP_INTERCEPTOR} from "@nestjs/core";
+import {ProductController} from "./rest/product/product.controller";
 
 @Module({
     imports: [
@@ -27,6 +28,7 @@ import {APP_INTERCEPTOR} from "@nestjs/core";
     controllers: [
         AppController,
         AuthController,
+        ProductController,
     ],
     providers: [
         AuthService,
