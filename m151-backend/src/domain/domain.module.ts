@@ -3,6 +3,7 @@ import {PersistenceModule} from "../persistence/persistence.module";
 import {AppQuery} from "./usecase/app.query";
 import {UserQuery} from "./usecase/user/user.query";
 import {UserManager} from "./usecase/user/user.manager";
+import {ProductQuery} from "./usecase/product/product.query";
 
 const managers = [
     UserManager,
@@ -11,10 +12,10 @@ const managers = [
 const queries = [
     AppQuery,
     UserQuery,
+    ProductQuery,
 ];
 
-const services = [
-];
+const services = [];
 
 @Module({
     imports: [

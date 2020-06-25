@@ -5,12 +5,14 @@ import {AppRepositoryImpl} from "./app/app.repository.impl";
 import {TypeOrmModule} from "@nestjs/typeorm";
 import {UserRepositoryImpl} from "./user/user.repository.impl";
 import {UserRepository} from "../domain/aggregate/user/user.repository";
+import {ProductRepositoryImpl} from "./product/product.repository.impl";
+import {ProductRepository} from "../domain/aggregate/product/product.repository";
 
 @Module({
     imports: [
         TypeOrmModule.forRoot({
             type: 'postgres',
-            host: 'postgres', // for prod 'postgres' else 'localhost'
+            host: 'localhost', // for prod 'postgres' else 'localhost'
             port: 5432,
             username: 'admin',
             password: 'admin',
@@ -33,10 +35,15 @@ import {UserRepository} from "../domain/aggregate/user/user.repository";
             useClass: UserRepositoryImpl,
             provide: UserRepository,
         },
+        {
+            useClass: ProductRepositoryImpl,
+            provide: ProductRepository,
+        },
     ],
     exports: [
         AppRepository,
         UserRepository,
+        ProductRepository,
     ],
 })
 export class PersistenceModule {

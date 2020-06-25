@@ -9,7 +9,7 @@ export class UserEntity extends BaseEntity {
     @Column({type: 'varchar', length: 64})
     username: string;
 
-    @Column({type: 'varchar', length: 64})
+    @Column({type: 'varchar', length: 64, nullable: true})
     password: string;
 
     @Column({

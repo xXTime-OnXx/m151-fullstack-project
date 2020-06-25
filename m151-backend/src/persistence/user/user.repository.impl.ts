@@ -6,14 +6,14 @@ import {UserEntity} from "./user.entity";
 
 @Injectable()
 export class UserRepositoryImpl extends UserRepository {
-    async create(createUserDto: CreateUserDto): Promise<void> {
+    public async create(createUserDto: CreateUserDto): Promise<void> {
         const userEntity = new UserEntity();
         userEntity.username = createUserDto.username;
         userEntity.password = createUserDto.password;
         await userEntity.save();
     }
 
-    async findOne(username: string, password: string): Promise<User> {
+    public async findOne(username: string, password: string): Promise<User> {
         return await UserEntity.findOne({username: username, password: password});
     }
 }
