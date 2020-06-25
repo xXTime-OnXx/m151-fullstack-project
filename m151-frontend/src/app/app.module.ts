@@ -9,13 +9,15 @@ import {FormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {ProfileComponent} from './page/profile/profile.component';
 import {AuthInterceptor} from "./interceptor/auth.interceptor";
+import { OverviewComponent } from './page/overview/overview.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    OverviewComponent
   ],
   imports: [
     BrowserModule,

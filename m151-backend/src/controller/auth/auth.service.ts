@@ -4,6 +4,7 @@ import {UserQuery} from "../../domain/usecase/user/user.query";
 import {CreateUserDto} from "../../domain/aggregate/user/create-user.dto";
 import {UserManager} from "../../domain/usecase/user/user.manager";
 import {User} from "../../domain/aggregate/user/user.type";
+import moment = require('moment');
 
 @Injectable()
 export class AuthService {
@@ -23,8 +24,10 @@ export class AuthService {
 
     async login(user: User) {
         const payload = {sub: user.id, username: user.username, role: user.role};
+        const access_token = this.jwtService.sign(payload);
         return {
-            access_token: this.jwtService.sign(payload),
+            access_token,
+            expires: moment().add(599, 's'),
         };
     }
 
