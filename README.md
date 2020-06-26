@@ -1,11 +1,12 @@
 # M151 Fullstack Project
-Module 151 full stack application.
+Module 151 full stack Applikation.
 
 ## Run Project
-**Requirements:** docker, docker-compose, npm
-
-To start the full application, make sure you're in the project root directory `/m151-fullstack-project` and type in the following command.
+Um die Applikation zu starten muss im Projekt Root Verzeichnis `/m151-fullstack-project` der folgende Command ausgeführt werden.
 ```
 $ docker-compose up
 ```
-Now open your browser and go to <http://localhost:8080>
+Die Applikation kann nun über diese Url aufgerufen werden: <http://localhost:8080>
+
+## Documentation
+Dokumentation und Präsentation sind im `/doc` Verzeichnis zu finden.
