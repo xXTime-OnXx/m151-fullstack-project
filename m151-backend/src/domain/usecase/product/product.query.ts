@@ -12,4 +12,7 @@ export class ProductQuery {
         return await this.productRepository.getAllProducts();
     }
 
+    public async getProduct(id: string) {
+        return await this.productRepository.getProduct(id);
+    }
 }

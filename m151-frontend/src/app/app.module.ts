@@ -10,6 +10,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {ProfileComponent} from './page/profile/profile.component';
 import {AuthInterceptor} from "./interceptor/auth.interceptor";
 import { OverviewComponent } from './page/overview/overview.component';
+import { ProductDetailsComponent } from './page/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { OverviewComponent } from './page/overview/overview.component';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    OverviewComponent
+    OverviewComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -9,4 +9,8 @@ export class ProductRepositoryImpl extends ProductRepository {
         return await ProductEntity.createQueryBuilder().getMany();
     }
 
+    public async getProduct(id: string): Promise<Product> {
+        return await ProductEntity.findOne(id);
+    }
+
 }

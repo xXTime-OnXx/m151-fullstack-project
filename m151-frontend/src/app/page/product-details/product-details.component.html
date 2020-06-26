@@ -1,0 +1,22 @@
+<section class="section">
+  <div class="container">
+    <h1 class="title has-text-centered">Produkt Details</h1>
+
+    <div class="card">
+      <div class="card-image">
+        <figure class="image is-square">
+          <img *ngIf="product" [alt]="product?.description" [src]="'assets/products/' + product?.image">
+        </figure>
+      </div>
+      <div class="card-content">
+        <div class="content">
+          <strong>{{product?.name}}</strong>
+          <br>
+          <p>Preis {{product?.price}} CHF</p>
+          <p>{{product?.description}}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

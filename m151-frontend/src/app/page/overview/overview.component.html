@@ -1,9 +1,36 @@
 <section class="section">
   <div class="container">
-    <h1 class="title has-text-centered">Product Overview</h1>
+    <h1 class="title has-text-centered">Produkte Übersicht</h1>
     <div class="flex-items">
-      <div class="box">
+      <div (click)="getProductDetails(product)" *ngFor="let product of products" class="card">
+        <div class="card-image">
+          <figure class="image is-256x256">
+            <img [alt]="product.description" [src]="'assets/products/' + product.image">
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="content">
+            <div class="columns">
+              <div class="column">
+                <strong>{{product.name}}</strong>
+                <br>
+                <p>Preis: {{product.price}} CHF</p>
+              </div>
+              <div class="column is-one-quarter">
+                <nav class="level" style="padding-top: 5px">
+                  <div class="level-right">
+                    <a aria-label="reply" class="level-item">
+                      <span class="icon is-medium">
+                        <i aria-hidden="true" class="fas fa-shopping-cart"></i>
+                      </span>
+                    </a>
+                  </div>
+                </nav>
+              </div>
+            </div>
 
+          </div>
+        </div>
       </div>
     </div>
   </div>
